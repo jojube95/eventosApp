@@ -6,10 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Tab
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,21 +23,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             EventosAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier=Modifier.fillMaxSize(), color=MaterialTheme.colors.background) {
-                    Column() {
-                        Row() {
-                            Tab(selected=true, onClick={ /*TODO*/ }) {
-                                Text(text="Events")
-                            }
-                            Tab(selected=false, onClick={ /*TODO*/ }) {
-                                Text(text="Employees")
-                            }
-                        }
-                        AppNavigation()
-                    }
-
-                }
+                AppNavigation()
             }
         }
     }

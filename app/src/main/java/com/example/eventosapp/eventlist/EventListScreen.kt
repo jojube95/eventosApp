@@ -19,14 +19,14 @@ import com.example.eventosapp.navigation.AppScreens
 import java.util.*
 
 @Composable
-fun EventListScreen(navController: NavController, eventListViewModel: EventListViewModel = hiltViewModel()) {
+fun EventListScreen(eventListViewModel: EventListViewModel = hiltViewModel()) {
     Scaffold {
-        BodyContent(eventListViewModel, navController)
+        BodyContent(eventListViewModel)
     }
 }
 
 @Composable
-fun BodyContent(eventListViewModel: EventListViewModel, navController: NavController){
+fun BodyContent(eventListViewModel: EventListViewModel){
     Column() {
         val eventList = eventListViewModel.eventList.observeAsState()
 
@@ -37,11 +37,6 @@ fun BodyContent(eventListViewModel: EventListViewModel, navController: NavContro
             eventList.value?.forEach { eventListEntry ->
                 Event(eventListEntry)
             }
-        }
-        Button(onClick={
-            navController.navigate(route = AppScreens.EmployeeListScreen.route)
-        }) {
-            Text(text="EmployeeList")
         }
     }
 }
