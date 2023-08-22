@@ -1,6 +1,7 @@
 package com.example.eventosapp.di
 
 import com.example.eventosapp.data.remote.EventApi
+import com.example.eventosapp.repository.EmployeeRepository
 import com.example.eventosapp.repository.EventRepository
 import com.example.eventosapp.util.Constants.BASE_URL
 import com.google.gson.GsonBuilder
@@ -23,6 +24,12 @@ object AppModule {
     fun provideEventRepository(
         api: EventApi
     ) = EventRepository(api)
+
+    @Singleton
+    @Provides
+    fun provideEmployeeRepository(
+        api: EventApi
+    ) = EmployeeRepository(api)
 
     @Singleton
     @Provides

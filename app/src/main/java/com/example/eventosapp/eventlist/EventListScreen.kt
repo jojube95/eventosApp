@@ -13,9 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import com.example.eventosapp.data.models.EventListEntry
-import com.example.eventosapp.navigation.AppScreens
+import com.example.eventosapp.data.models.Event
 import java.util.*
 
 @Composable
@@ -31,7 +29,7 @@ fun BodyContent(eventListViewModel: EventListViewModel){
         val eventList = eventListViewModel.eventList.observeAsState()
 
         LaunchedEffect(key1 = null) {
-            eventListViewModel.fetchBooks()
+            eventListViewModel.fetchEvents()
         }
         Column() {
             eventList.value?.forEach { eventListEntry ->
@@ -42,7 +40,7 @@ fun BodyContent(eventListViewModel: EventListViewModel){
 }
 
 @Composable
-fun Event(eventListEntry: EventListEntry){
+fun Event(event: Event){
     Card(elevation = 10.dp,
     modifier = Modifier.padding(10.dp)) {
         Row(
@@ -60,7 +58,7 @@ fun Event(eventListEntry: EventListEntry){
                 contentAlignment = Alignment.Center
             ) {
                 val cal: Calendar=Calendar.getInstance()
-                cal.time=eventListEntry.fecha
+                cal.time=event.fecha
 
                 Text(text = "${cal.get(Calendar.DAY_OF_MONTH)}/${cal.get(Calendar.MONTH) + 1}")
             }
@@ -69,11 +67,11 @@ fun Event(eventListEntry: EventListEntry){
 
             Column(Modifier.fillMaxWidth()) {
                 // Encabezado
-                Text(text = eventListEntry.titulo, style = MaterialTheme.typography.h6)
+                Text(text = event.titulo, style = MaterialTheme.typography.h6)
 
                 // Subtítulo
                 CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                    Text(text = eventListEntry.descripcion, style = MaterialTheme.typography.body1)
+                    Text(text = event.descripcion, style = MaterialTheme.typography.body1)
                 }
             }
         }

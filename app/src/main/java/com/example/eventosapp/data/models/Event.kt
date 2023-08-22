@@ -3,7 +3,7 @@ package com.example.eventosapp.data.models
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-data class EventListEntry(
+data class Event(
     @SerializedName("titulo")
     val titulo: String,
     @SerializedName("descripcion")

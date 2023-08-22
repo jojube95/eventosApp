@@ -1,8 +1,9 @@
 package com.example.eventosapp.data.models
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
-data class EmployeeListEntry(
-    @SerializedName("nombre")
-    val nombre: String
+data class EmployeeType(
+    @SerializedName("value")
+    val value: String
 )
