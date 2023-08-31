@@ -2,6 +2,9 @@ package com.example.eventosapp.employeelist
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -14,7 +17,17 @@ import com.example.eventosapp.data.models.Employee
 
 @Composable
 fun EmployeeListScreen(employeeListViewModel: EmployeeListViewModel = hiltViewModel()) {
-    Scaffold {
+    Scaffold(
+        topBar ={
+            TopAppBar() {
+                IconButton(
+                    onClick={ println("Add") },
+                    modifier=Modifier.weight(1f).fillMaxSize()
+                ) {
+                    Icon(imageVector=Icons.Filled.Add, contentDescription="Add")
+                }
+            }
+        }) {
         BodyContent(employeeListViewModel)
     }
 }
